@@ -43,3 +43,62 @@ server_checker.check_server_status()
 ```
 
 The script can also be run as an AWS Lambda function. To do this, copy and paste the code into the AWS Lambda function editor and set the required environment variables. You can then invoke the function manually or set up an event trigger to run the function at regular intervals.
+
+
+
+------------------------
+
+### To Deploy the Lambda Function as a Container Image
+Clone the repository, complete the **Slack webhook URL**, **Server endpoint URL**, **Server name** and **Current working directory** as described above.
+Ensure that Docker is installed on your local machine and execute the following command in the same directory as the `Dockerfile`.
+
+```bash
+docker build -t server-status-checker-lambda .
+```
+
+### Running the Lambda function locally
+
+```bash
+docker run -p 9000:8080 server-status-checker:latest  
+```
+
+### Testing the Lambda function lcoally
+
+```bash
+curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}
+```
+Expected Output: 
+
+```
+"Hello from AWS Lambda using Python3.8.16"
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
